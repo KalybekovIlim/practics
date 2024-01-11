@@ -7,3 +7,23 @@ class Solution:
                     return res
             res += strs[0][i]
         return res
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        o = {
+            "}":"{",
+            "]":"[",
+            ")":"(",
+        }
+        stack = []
+
+        for c in s:
+            if c in o:
+                if not (
+                    stack
+                    and (stack.pop() == o[c])
+                ):
+                    return False
+            else:
+                stack.append(c)
+        return not stack
